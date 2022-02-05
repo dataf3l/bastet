@@ -17,6 +17,7 @@ body, input, select{
 }
 body {
      background-image:url("assets/bg/MaxPixel.net-Black-Matrix-Background-Geometric-Hexagons-Green-1412466.png");
+     background-image:url("assets/bg/hexgif1.gif");
      background-repeat: no-repeat;
      background-size: cover;
  }
@@ -35,6 +36,12 @@ body {
 }
 .data tbody td {
     text-align:right;
+}
+input, select {
+    -webkit-appearance: none;
+    border:1px solid white;
+    border-radius:5px;
+
 }
 /*
 .board tbody {
@@ -55,7 +62,7 @@ body {
         
     </head>
     <body  class=dark>
-        <table width="800" class='centered board' border=0 cellspacing=0 cellpadding=10 >
+        <table width="850" class='centered board' border=0 cellspacing=0 cellpadding=10 >
             <tr>
                 <td valign=top width=400>
                     <canvas id=canvas width=400 height=600></canvas>
@@ -63,6 +70,32 @@ body {
                         <input onkeyup='check_input()' autocomplete="off" type=text id=input autofocus style="width:100%" />
                     </form>
                 </td>
+                <!--
+                <td  valign=top  width=50>
+                    
+                    <table>
+                        <tr><td><input type='button' value="&nbsp; 0 &nbsp;" onclick='add_digit(0)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 1 &nbsp;" onclick='add_digit(1)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 2 &nbsp;" onclick='add_digit(2)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 3 &nbsp;" onclick='add_digit(3)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 4 &nbsp;" onclick='add_digit(4)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 5 &nbsp;" onclick='add_digit(5)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 6 &nbsp;" onclick='add_digit(6)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 7 &nbsp;" onclick='add_digit(7)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 8 &nbsp;" onclick='add_digit(8)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 9 &nbsp;" onclick='add_digit(9)' /></td></tr>
+
+                        <tr><td><input type='button' value="&nbsp; A &nbsp;" onclick='add_digit("A")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; B &nbsp;" onclick='add_digit("B")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; C &nbsp;" onclick='add_digit("C")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; D &nbsp;" onclick='add_digit("D")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; E &nbsp;" onclick='add_digit("E")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; F &nbsp;" onclick='add_digit("F")' /></td></tr>
+
+                    </table>
+                    
+                </td>
+                -->
                 <td  valign=top  width=400>
                     <h1>Hexa-tetris</h1>
                     <h2>Commit to memory</h2>

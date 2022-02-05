@@ -82,8 +82,14 @@ function check_input(){
         choose_random_number();
         input.value = "";
     }
-
 }
+function add_digit(d){
+    var input = document.getElementById("input");
+    input.value += d;
+    check_input();
+}
+
+
 function send_input(){
     var value = get_input()
     if(to_dec_func(value) == g_current_number){
@@ -204,7 +210,7 @@ function play_music(){
         //g_audio.stop();
         g_audio = new Audio(song);
         g_audio.loop = true;
-    }  else{
+    } else {
         g_audio.src = song;
         g_audio.load();
     }
@@ -236,6 +242,7 @@ function init(){
     game_loop();
 }
 function set_level(level){
+    level = parseInt(level);
     g_level = level;
     g_mode++; // modes alternate
     if(g_mode == 3){
