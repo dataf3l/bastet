@@ -1,6 +1,6 @@
 
 // the purpose of this game is to help people memorize the map
-// between hexadecimal numbers and binary numbers
+// between ascii and hexadecimal numbers.
 // this game is similar to tetris
 
 
@@ -256,7 +256,7 @@ function set_mode(mode){
     g_mode = mode;
 }
 function choose_random_number(){
-    // choose a random number from 1 to 16
+    // choose a random number from 1 to 16 // 256???? (ASCII)
     var nr = get_number_range();
     g_current_number = nr[0] + Math.floor(Math.random() * (nr[1] - nr[0]));
 }
