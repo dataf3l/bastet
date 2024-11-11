@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ASCII-tetris: ASCII to HEXADECIMAL tetris</title>
+        <style>
+
+/* dark cyber-punk background */ 
+body, input, select{
+    background-color: #000;
+    color: #fff;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12px;
+    line-height: 1.5em;
+    padding: 10px;
+    
+}
+body {
+     background-image:url("assets/bg/MaxPixel.net-Black-Matrix-Background-Geometric-Hexagons-Green-1412466.png");
+     background-image:url("assets/bg/hexgif1.gif");
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+#input {
+    font-size:32pt;
+}
+
+#canvas{
+    border: 4px solid #ccc;
+}
+.centered{
+    margin: 0 auto;
+}
+.board {
+    background-color:rgba(0,0,0,0.9);
+}
+.data tbody td {
+    text-align:right;
+}
+input, select {
+    -webkit-appearance: none;
+    border:1px solid white;
+    border-radius:5px;
+
+}
+/*
+.board tbody {
+    background-color:rgba(0,0,0,0);
+}
+
+.board tbody tr{
+    background-color:rgba(0,0,0,0);
+}
+.board tbody td{
+    background-color:rgba(0,0,0,0);
+}
+*/
+
+        </style>
+        <script src="bastet-ascii.js"></script>    
+        
+        
+    </head>
+    <body  class=dark onload="pre_init()">
+        <table width="850" class='centered board' border=0 cellspacing=0 cellpadding=10 >
+            <tr>
+                <td valign=top width=400>
+                    <canvas id=canvas width=400 height=600></canvas>
+                    <form onsubmit="return send_input()">
+                        <input onkeyup='check_input()' autocomplete="off" type=text id=input autofocus style="width:100%" />
+                    </form>
+                </td>
+                <!--
+                <td  valign=top  width=50>
+                    
+                    <table>
+                        <tr><td><input type='button' value="&nbsp; 0 &nbsp;" onclick='add_digit(0)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 1 &nbsp;" onclick='add_digit(1)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 2 &nbsp;" onclick='add_digit(2)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 3 &nbsp;" onclick='add_digit(3)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 4 &nbsp;" onclick='add_digit(4)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 5 &nbsp;" onclick='add_digit(5)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 6 &nbsp;" onclick='add_digit(6)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 7 &nbsp;" onclick='add_digit(7)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 8 &nbsp;" onclick='add_digit(8)' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; 9 &nbsp;" onclick='add_digit(9)' /></td></tr>
+
+                        <tr><td><input type='button' value="&nbsp; A &nbsp;" onclick='add_digit("A")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; B &nbsp;" onclick='add_digit("B")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; C &nbsp;" onclick='add_digit("C")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; D &nbsp;" onclick='add_digit("D")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; E &nbsp;" onclick='add_digit("E")' /></td></tr>
+                        <tr><td><input type='button' value="&nbsp; F &nbsp;" onclick='add_digit("F")' /></td></tr>
+
+                    </table>
+                    
+                </td>
+                -->
+                <td  valign=top  width=400>
+                    <h1>ASCII-tetris</h1>
+                    <h2>Commit to memory</h2>
+                    <hr>
+                    <input type=button value=start onclick="init()"  />
+                    <input type=button value=instructions onclick="instructions()"  />
+                    <!-- level selector-->
+                    <select id=level onchange="set_level(this.value)">
+                        <option value=1> Level 000001</option>
+                        <option value=2> Level 000010</option>
+                        <option value=3> Level 000011</option>
+                        <option value=4> Level 000110</option>
+                        <option value=5> Level 000101</option>
+                        <option value=6> Level 000110</option>
+                        <option value=7> Level 000111</option>
+                        <option value=8> Level 001000</option>
+                        <option value=9> Level 001001</option>
+                        <option value=10>Level 001010</option>
+                        <option value=11>Level 001011</option>
+                        <option value=12>Level 001100</option>
+                        <option value=13>Level 001101</option>
+                        <option value=14>Level 001110</option>
+                        <option value=15>Level 001111</option>
+                        <option value=16>Level 010000</option>
+                        <option value=17>Level 010001</option>
+                        <option value=18>Level 010010</option>
+                        <option value=19>Level 010011</option>
+                        <option value=20>Level 010100</option>
+                        <option value=21>Level 010101</option>
+                        <option value=22>Level 010110</option>
+                        <option value=23>Level 010111</option>
+                        <option value=24>Level 011000</option>
+                        <option value=25>Level 011001</option>
+                        <option value=26>Level 011010</option>
+                        <option value=27>Level 011011</option>
+                        <option value=28>Level 011100</option>
+                        <option value=29>Level 011101</option>
+                        <option value=30>Level 011110</option>
+                        <option value=31>Level 011111</option>
+                        <option value=31>Level 011111</option>
+                        <option value=32>Level 100000</option>
+                        <option value=33>Level 100001</option>
+                        <option value=34>Level 100010</option>
+                        <option value=35>Level 100011</option>
+                        <option value=36>Level 100100</option>
+                        <option value=37>Level 100101</option>
+                        <option value=38>Level 100110</option>
+                        <option value=39>Level 100111</option>
+                        <option value=40>Level 101000</option>
+                        <option value=41>Level 101001</option>
+                        <option value=42>Level 101100</option>
+                        <option value=43>Level 101101</option>
+                        <option value=44>Level 101110</option>
+                        <option value=45>Level 101111</option>
+                        <option value=46>Level 110000</option>
+                        
+                    </select>   
+                    <select id=level onchange="set_mode(this.value)">
+                        <option value=1>Mode 01</option>
+                        <option value=2>Mode 10</option>
+                        
+                    </select>   
+                    <input type=button value='toggle audio' onclick="toggle_sound()"  />
+                    <hr>
+                    <div id='instructions' style='display:none'>
+                        The game consists in to converting Hexadecimal numbers
+                        into ASCII characters.
+                    <table border=1 cellspacing=0 cellpadding=4 class=data>
+                        <tr><td>0</td><td>0</td ><td>   0</td></tr>
+                        <tr><td>1</td><td>1</td ><td>   1</td></tr>
+                        <tr><td>2</td><td>2</td ><td>  10</td></tr>
+                        <tr><td>3</td><td>3</td ><td>  11</td></tr>
+                        <tr><td>4</td><td>4</td ><td> 100</td></tr>
+                        <tr><td>5</td><td>5</td ><td> 101</td></tr>
+                        <tr><td>6</td><td>6</td ><td> 110</td></tr>
+                        <tr><td>7</td><td>7</td ><td> 111</td></tr>
+                        <tr><td>8</td><td>8</td ><td>1000</td></tr>
+                        <tr><td>9</td><td>9</td ><td>1001</td></tr>
+                        <tr><td>A</td><td>10</td><td>1010</td></tr>
+                        <tr><td>B</td><td>11</td><td>1011</td></tr>
+                        <tr><td>C</td><td>12</td><td>1100</td></tr>
+                        <tr><td>D</td><td>13</td><td>1101</td></tr>
+                        <tr><td>E</td><td>14</td><td>1110</td></tr>
+                        <tr><td>F</td><td>15</td><td>1111</td></tr>
+                        </tr>
+                    </table>
+                    </div>
+            
+                </td>
+            </tr>
+        </table>
+    
+    <div>
+        
+    </div>
+    </body>
+</html>
