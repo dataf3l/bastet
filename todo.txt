@@ -1,0 +1,6 @@
+1. make game easier to play, by adding more, small levels
+2. involver a , b, a+b earlier in the logic, to force a out of short memory thing
+3. letters only
+4. level names?
+5. some initial instructions
+
